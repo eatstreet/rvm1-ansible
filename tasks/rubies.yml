@@ -71,3 +71,7 @@
   command: '{{ rvm1_rvm }} remove {{ rvm1_delete_ruby }}'
   changed_when: False
   when: rvm1_delete_ruby and detect_delete_ruby.rc == 0
+
+- name: Purge src and unused stuff
+  command: '{{ rvm1_rvm }} cleanup all'
+  when: rvm1_cleanup_ruby
