@@ -49,3 +49,10 @@
 - name: Configure rvm
   command: '{{ rvm1_rvm }} autolibs {{ rvm1_autolib_mode }}'
   when: not rvm_binary.stat.exists
+
+- name: Add remote url
+  lineinfile: 
+    dest: '{{ rvm1_install_path }}/user/db'
+    state: present
+    line: rvm_remote_server_url3={{ rvm1_remote_server }}
+  when: rvm1_remote_server is defined
